@@ -25,5 +25,4 @@ class Ball(Turtle):
 
     def reset(self):
         self.goto(0, 0)
-        self.x_move *= -1
-        self.y_move *= -1
+
