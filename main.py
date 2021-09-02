@@ -38,7 +38,7 @@ game_is_on = True
 while game_is_on:
 
     # Add delay so the ball moves slower
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
 
     # Refresh the screen to show elements after turning animation off
     screen.update()
