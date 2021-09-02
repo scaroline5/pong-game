@@ -1,5 +1,7 @@
 from turtle import Screen, Turtle
 from paddle import Paddle
+from ball import Ball
+import time
 
 # Create the game Screen
 screen = Screen()
@@ -24,11 +26,18 @@ screen.onkeypress(key="Down", fun=right_paddle.move_down)
 screen.onkeypress(key="w", fun=left_paddle.move_up)
 screen.onkeypress(key="s", fun=left_paddle.move_down)
 
+# Create the ball
+ball = Ball()
+
 game_is_on = True
 while game_is_on:
+    time.sleep(0.1)
+
     # Refresh the screen to show elements after turning animation off
     screen.update()
 
+    # Move the ball
+    ball.move()
 
 # Keep the window open
 screen.exitonclick()
