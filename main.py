@@ -1,3 +1,4 @@
+from scoreboard import ScoreBoard
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
@@ -29,6 +30,9 @@ screen.onkeypress(key="s", fun=left_paddle.move_down)
 # Create the ball
 ball = Ball()
 
+# Create Scoreboard
+scoreboard = ScoreBoard()
+
 game_is_on = True
 
 while game_is_on:
@@ -50,9 +54,17 @@ while game_is_on:
     if ball.distance(right_paddle) < 50 and ball.xcor() > 320 or ball.distance(left_paddle) < 50 and ball.xcor() < -320:
         ball.bounce_xcor()
 
-    # Detect when paddle misses the ball
-    if ball.xcor() > 380 or ball.xcor() < -380:
+    # Detect when right paddle misses the ball
+    if ball.xcor() > 380:
         ball.reset()
+        ball.bounce_xcor()
+        scoreboard.add_point("right")
+
+    # Detect when left paddle misses the ball
+    if ball.xcor() < -380:
+        ball.reset()
+        ball.bounce_xcor()
+        scoreboard.add_point("left")
 
 # Keep the window open
 screen.exitonclick()
