@@ -1,4 +1,4 @@
-from turtle import Screen, Turtle
+from turtle import Screen
 from paddle import Paddle
 from ball import Ball
 import time
@@ -30,7 +30,10 @@ screen.onkeypress(key="s", fun=left_paddle.move_down)
 ball = Ball()
 
 game_is_on = True
+
 while game_is_on:
+
+    # Add delay so the ball moves slower
     time.sleep(0.1)
 
     # Refresh the screen to show elements after turning animation off
@@ -38,6 +41,11 @@ while game_is_on:
 
     # Move the ball
     ball.move()
+
+    # Detect collision with the top and bottom walls
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.bounce()
+
 
 # Keep the window open
 screen.exitonclick()
